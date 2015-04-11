@@ -6,6 +6,7 @@
 u16 hint_val = 1;
 u16 col = 0;
 u16 col_off = 0;
+u16 phrase_num = 0;
 
 
 void lp(u16 x, u16 y, u16 val)
@@ -131,6 +132,7 @@ void putCSHLogo(u16 x, u16 y)
 	y++;
 	lp(x,y,7);
 	lp(x+2,y,7);
+
 	lp(x+5,y,7);
 	lp(x+7,y,8);
 	lp(x+8,y,5);
@@ -145,6 +147,155 @@ void putCSHLogo(u16 x, u16 y)
 	lp(x+19,y,5);
 	lp(x+20,y,9);
 	lp(x+22,y,7);
+	// line 12
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+5,y,7);
+	lp(x+12,y,7);
+	lp(x+15,y,7);
+	lp(x+22,y,7);
+	// line 13
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+5,y,8);
+	lp(x+6,y,5);
+	lp(x+7,y,5);
+	lp(x+8,y,5);
+	lp(x+9,y,5);
+	lp(x+10,y,6);
+	lp(x+12,y,7);
+	lp(x+15,y,7);
+	lp(x+17,y,4);
+	lp(x+18,y,5);
+	lp(x+19,y,5);
+	lp(x+20,y,6);
+	lp(x+22,y,7);
+	// line 14
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+10,y,7);
+	lp(x+12,y,7);
+	lp(x+15,y,7);
+	lp(x+17,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	// line 15
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+5,y,4);
+	lp(x+6,y,5);
+	lp(x+7,y,6);
+	lp(x+10,y,7);
+	lp(x+12,y,7);
+	lp(x+15,y,8);
+	lp(x+16,y,5);
+	lp(x+17,y,9);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	// line 16
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+5,y,7);
+	lp(x+7,y,8);
+	lp(x+8,y,5);
+	lp(x+9,y,5);
+	lp(x+10,y,9);
+	lp(x+12,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	// line 17
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+5,y,7);
+	lp(x+12,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	// line 18
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+
+	lp(x+5,y,8);
+	lp(x+6,y,5);
+	lp(x+7,y,5);
+	lp(x+8,y,5);
+	lp(x+9,y,5);
+	lp(x+10,y,5);
+	lp(x+11,y,5);
+	lp(x+12,y,9);
+	lp(x+15,y,4);
+	lp(x+16,y,5);
+	lp(x+17,y,6);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	
+	
+	// line 19
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+	lp(x+15,y,7);
+	lp(x+17,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	// line 19
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,7);
+	lp(x+15,y,7);
+	lp(x+17,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+
+
+	// line 20
+	y++;
+	lp(x,y,7);
+	lp(x+2,y,8);
+	for (int i = 3; i < 15; i++)
+	{
+		lp(x+i,y,5);
+	}
+	lp(x+15,y,9);
+	lp(x+17,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	
+	
+
+	// line 21
+	y++;
+	lp(x,y,7);
+	lp(x+17,y,7);
+	lp(x+20,y,7);
+	lp(x+22,y,7);
+	
+	
+	// Line 22
+	
+	y++;
+	lp(x,y,8); // corner TL
+	for (u16 i = 1; i < 17; i++)
+	{
+		lp(x + i,y,5);
+	}
+	lp(x + 17,y,9);
+	lp(x + 20,y,8);
+	lp(x + 21,y,5);
+	lp(x + 22,y,9);
+
 
 
 }
@@ -179,20 +330,57 @@ void setup(void)
 	VDP_setPlanSize(32,32);
 }
 
+void print_phrase(u16 p)
+{
+	switch(p)
+	{
+		case 0:
+			col_puts(0,26,"Getting more work done after 2:00 than most people do every day.");
+			break;
+		case 1:
+			col_puts(0,26,"                   Social versus Technical!                     ");
+			break;
+		case 2:
+			col_puts(0,26,"       68K blows the '88 away! Welcome to Motorola Zone!        ");
+			break;
+		case 3:
+			col_puts(0,26,"                 I said hey! What's going on?!                  ");
+			break;
+		case 4:
+			col_puts(0,26,"     Why buy something when you can DIY for twice the cost?     ");
+			break;
+		case 5:
+			col_puts(0,26,"               We're working on drink, we swear!                ");
+			break;
+		case 6:
+			col_puts(0,26," Lean synergy-driven agile development to leverage our product. ");
+			break;
+		case 7:
+			col_puts(0,26,"                 Can you hear my microphone?                    ");
+			break;
+		case 8:
+			col_puts(0,26,"                         u wot m8                               ");
+			break;
+
+	}
+}
+
 int main(void)
 {
 	u16 assholes = 0;
+	u16 delay_mod = 32;
 	setup();
 	VDP_setPaletteColor(0,0x000);
-	VDP_setPaletteColor(1,0x666);
-	VDP_setPaletteColor(2,0xAAA);
+	VDP_setPaletteColor(1,0x444);
+	VDP_setPaletteColor(2,0x888);
 	VDP_setPaletteColor(3,0xEEE);
 	VDP_setHIntCounter(hint_val);
 	volatile u8 p1 = pad_read(0);
-	col_puts(2,2,"Welcome to Computer Science House!");
+	col_puts40(4,0,"Computer Science House");
 	
 	putCSHLogo(4, 2);
 
+	print_phrase(1);
 	VDP_setHInterrupt(1);
 	u16 delay = 0;
 	u8 dir = 0;
@@ -202,14 +390,32 @@ int main(void)
 		VDP_waitVSync();
 		VDP_setHInterrupt(0);
 		delay++;
-		if (delay == 512)
+		if (delay % 128 == 0)
 		{
+			delay_mod = delay_mod >> 1;
+			if (delay_mod == 1)
+			{
+
+				delay_mod = 32;
+			}
+		}
+		if (delay == 2048)
+		{
+			if (phrase_num == 8)
+			{
+				phrase_num = 0;
+			}
 			hint_val++;
 			VDP_setHIntCounter(hint_val);
+			phrase_num++;
+			VDP_setHInterrupt(0);
+			print_phrase(phrase_num);
+			VDP_setHInterrupt(1);
+
 
 		delay = 0;
 		}		
-		if (delay % 2 == 0)
+		if (delay % delay_mod == 0)
 		{
 			col_off += 0x002;
 		}

@@ -7,6 +7,33 @@ void col_init(void)
 	VDP_setHorizontalScroll(PLAN_B,4);
 }
 
+void col_puts40(u16 x, u16 y, char *s)
+{
+	u16 orig_x = x;
+	while(*s)
+	{
+		if (*s == '\n')
+		{	
+			y++;
+			x = orig_x;
+		}
+		else if (*s == '\t')
+		{
+			x = x + 4;
+		}
+		else
+		{
+			VDP_setTileMapXY(
+				VDP_PLAN_B,
+				TILE_ATTR_FULL(0,0,0,0,
+				(*s + (COL_FONT_VRAM_OFFSET/32))),
+				x,y);	
+			x++;
+		}
+		s++;
+	}
+}
+
 void col_puts(u16 x, u16 y, char *s)
 {
 	u16 orig_x = x;

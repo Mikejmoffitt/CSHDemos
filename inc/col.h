@@ -8,5 +8,6 @@
 
 void col_init(void);
 void col_puts(u16 x, u16 y, char *s);
+void col_puts40(u16 x, u16 y, char *s);
 
 #endif
