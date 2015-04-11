@@ -12,7 +12,7 @@ unsigned char pad_read(unsigned char pl)
 	*ctrlr |= (0x40); 
 	
 	// Grab U,D,L,R and B,C
-	unsigned char ret = (*ctrlr & 0xF) | ((*ctrlr & 0x30) << 1); 
+	volatile unsigned char ret = (*ctrlr & 0xF) | ((*ctrlr & 0x30) << 1); 
 	
 	// Clear bit 6 to get A and Start
 	*ctrlr = *ctrlr & ~(0x40); 
@@ -22,4 +22,3 @@ unsigned char pad_read(unsigned char pl)
 	return ~ret;
 }
 
-/* vim: set noet: */
