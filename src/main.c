@@ -438,6 +438,10 @@ int main(void)
 				phrase_num = 0;
 			}
 			hint_val++;
+			if (hint_val == 12)
+			{
+				hint_val = 2;
+			}
 			delay_mod = delay_mod >> 1;
 			if (delay_mod == 0)
 			{
