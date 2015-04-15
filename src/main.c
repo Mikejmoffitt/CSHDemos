@@ -441,7 +441,7 @@ int main(void)
 			delay_mod = delay_mod >> 1;
 			if (delay_mod == 0)
 			{
-				delay_mod = 1;
+				delay_mod = delay_mod = 4;
 			}
 			VDP_setHIntCounter(hint_val);
 			VDP_setHInterrupt(0);
