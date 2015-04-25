@@ -89,6 +89,9 @@ run: out.bin
 test: out.bin
 	@exec util/megaloader/megaloader md $< /dev/ttyUSB0 2> /dev/null
 
+test: out.bin
+	@exec util/megaloader/megaloader md $< /dev/ttyUSB0 2>/dev/null
+
 boot/sega.o: boot/rom_head.bin
 	$(AS) $(ASFLAGS) boot/sega.s -o $@
 
