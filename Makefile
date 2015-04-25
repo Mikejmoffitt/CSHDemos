@@ -70,7 +70,7 @@ RESOURCES+=$(RESS:.res=.o)
 CS=$(wildcard src/*.c)
 SS=$(wildcard src/*.s)
 S80S=$(wildcard src/*.s80)
-CS+=$(wildcard *.c)
+# CS+=$(wildcard *.c)
 SS+=$(wildcard *.s)
 S80S+=$(wildcard *.s80)
 RESOURCES+=$(CS:.c=.o)
@@ -79,19 +79,21 @@ RESOURCES+=$(S80S:.s80=.o)
 
 OBJS = $(RESOURCES)
 
-.PHONY: all run clean
+.PHONY: all run test clean
 
 all: out.bin 
 
 run: out.bin
-	@exec util/Fusion $< 2> /dev/null
+	@exec mednafen $< 2> /dev/null
+
+test: out.bin
+	@exec util/megaloader/megaloader md $< /dev/ttyUSB0 2> /dev/null
 
 boot/sega.o: boot/rom_head.bin
 	$(AS) $(ASFLAGS) boot/sega.s -o $@
 
 scd/segacd.o: 
 	$(AS) $(ASFLAGS) scd/segacd.s -o $@
-
 
 out.iso: out.elf_scd
 	#

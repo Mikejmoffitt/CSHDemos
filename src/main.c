@@ -16,7 +16,7 @@ void lp(u16 x, u16 y, u16 val)
 	VDP_setTileMapXY(
 				VDP_PLAN_A,
 				TILE_ATTR_FULL(0,1,0,0,
-				val + (COL_FONT_VRAM_OFFSET/32)),x,y);
+				val + (COL_FONT_VRAM_OFFSET)),x,y);
 }
 
 void putCSHLogo(u16 x, u16 y)
@@ -405,7 +405,7 @@ int main(void)
 		stars[i].y = 128 + i * 8;
 		stars[i].speed = (i % 7) + 1;
 		stars[i].offset = (3 * i) % 4;
-		stars[i].size = (i % 4 == 0) ? ('.' + COL_FONT_VRAM_OFFSET/32) : (128 + '.' + COL_FONT_VRAM_OFFSET/32);
+		stars[i].size = (i % 4 == 0) ? ('.' + COL_FONT_VRAM_OFFSET) : (128 + '.' + COL_FONT_VRAM_OFFSET);
 	}
 
 	print_phrase(8);
