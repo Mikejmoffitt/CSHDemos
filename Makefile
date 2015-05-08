@@ -79,24 +79,34 @@ RESOURCES+=$(S80S:.s80=.o)
 
 OBJS = $(RESOURCES)
 
-.PHONY: all run test clean
+.PHONY: all clean mednafen debug gens
 
 all: out.bin 
 
-run: out.bin
+mednafen: out.bin
 	@exec mednafen $< 2> /dev/null
+
+debug: out.bin
+	@exec gens $< 2> /dev/null
+
+gens: out.bin
+	@exec gens $< 2> /dev/null
+
+regen: out.bin
+	@exec wine ./util/regen/Regen.exe ../../out.bin
 
 test: out.bin
 	@exec util/megaloader/megaloader md $< /dev/ttyUSB0 2> /dev/null
 
-test: out.bin
-	@exec util/megaloader/megaloader md $< /dev/ttyUSB0 2>/dev/null
+test32: out.bin
+	@exec util/megaloader/mega32 md $< /dev/ttyUSB0 2> /dev/null
 
 boot/sega.o: boot/rom_head.bin
 	$(AS) $(ASFLAGS) boot/sega.s -o $@
 
 scd/segacd.o: 
 	$(AS) $(ASFLAGS) scd/segacd.s -o $@
+
 
 out.iso: out.elf_scd
 	#

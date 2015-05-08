@@ -1,5 +1,4 @@
 #include <genesis.h>
-#include <stdio.h>
 #include "col.h"
 #include "mpad.h"
 #include "sprites.h"
@@ -9,21 +8,6 @@ u16 hint_val = 1;
 u16 col = 0;
 u16 col_off = 0;
 u16 phrase_num = 0;
-
-
-void lp(u16 x, u16 y, u16 val)
-{
-	val += 128;
-	VDP_setTileMapXY(
-				VDP_PLAN_A,
-				TILE_ATTR_FULL(0,1,0,0,
-				val + (COL_FONT_VRAM_OFFSET)),x,y);
-}
-
-void putCSHLogo(u16 x, u16 y)
-{
-	awful_put_logo(x,y);
-}
 
 _voidCallback *v_int(void)
 {
@@ -51,7 +35,6 @@ void setup(void)
 	// Configure background planes to be 64 x 32 cells
 	VDP_setPlanSize(64,32);
 
-	
 	// Initialize column text output (DMA graphic tiles)
 	col_init();
 
@@ -67,7 +50,21 @@ void setup(void)
 
 	// Now we can enable interrupts
 	SYS_enableInts();
+
+	// Configure the screen with to 40 columns
+	VDP_setScreenWidth320();
+
+	// Configure background planes to be 64 x 32 cells
+	VDP_setPlanSize(64,32);
+
 }
+
+const char* phrases[] = 
+{
+	"test1",
+	"test2",
+	"test3"
+};
 
 void print_phrase(u16 p)
 {
@@ -133,7 +130,7 @@ int main(void)
 
 	col_puts40(8,0,"Computer Science House");
 
-	putCSHLogo(8, 2);
+	awful_put_logo(8, 2);
 
 	star stars[NUM_STARS];
 	u16 i = 0;
