@@ -2,7 +2,7 @@
 
 void col_init(void)
 {
-	VDP_doVRamDMA(gfx_font,COL_FONT_VRAM_OFFSET*32,16 * 256);
+	VDP_doVRamDMA((u32)gfx_font,COL_FONT_VRAM_OFFSET*32,16 * 256);
 
 	VDP_setHorizontalScroll(PLAN_B,4);
 }
@@ -36,10 +36,16 @@ void col_puts40(u16 x, u16 y, char *s)
 
 void col_puts(u16 x, u16 y, char *s)
 {
+	u16 max = 80;
 	u16 orig_x = x;
-	register flip = x % 2;
+	register u32 flip = x % 2;
 	while(*s)
 	{
+		max--;
+		if (max == 0)
+		{
+			return;
+		}
 		if (*s == '\n')
 		{	
 			flip = orig_x % 2;

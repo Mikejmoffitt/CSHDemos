@@ -4,24 +4,72 @@
 #include "sprites.h"
 #include "awful.h"
 
-u16 hint_val = 1;
+u16 hint_val = 3;
 u16 col = 0;
 u16 col_off = 0;
 u16 phrase_num = 0;
 
+#define PAL_LEN (53 - 15)
+const u16 palette[] = 
+{
+	0x00E,
+	0x02E,
+	0x04E,
+	0x06E,
+	0x08E,
+	0x0AE,
+	0x0CE,
+	0x0EE,
+	0x0EC,
+	0x0EA,
+	0x0E8,
+	0x0E6,
+	0x2E4,
+	0x4E0,
+	0x6E0,
+	0x8E0,
+	0xAE0,
+	0xCE0,
+	0xEE0,
+	0xEC0,
+	0xEA0,
+	0xE80,
+	0xE60,
+	0xE40,
+	0xE20,
+	0xE00,
+	0xE02,
+	0xE04,
+	0xE06,
+	0xE08,
+	0xE0A,
+	0xE0C,
+	0xE0E,
+	0xC0E,
+	0xA0E,
+	0x80E,
+	0x60E,
+	0x40E,
+	0x20E
+};
+
+volatile u16 vbl_wait;
+
 _voidCallback *v_int(void)
 {
-	//VDP_setPaletteColor(0,col);	
-	//col_puts(0,1,"Got int...");
-	col = col_off;
-	return;
+	vbl_wait = 0;
+	return NULL;
 }	
 
 _voidCallback *h_int(void)
 {
-	VDP_setPaletteColor(14,col);
-	col += 0x002;
-	return; 
+	VDP_setPaletteColor(14,palette[col]);
+	col++;
+	while (col >= PAL_LEN)
+	{
+		col -= PAL_LEN;
+	}
+	return NULL; 
 }
 
 void setup(void)
@@ -45,8 +93,8 @@ void setup(void)
 	SYS_setInterruptMaskLevel(0);
 
 	// Set pointers to interrupt service routines
-	SYS_setVIntCallback(v_int);
-	SYS_setHIntCallback(h_int);
+	SYS_setVIntCallback((_voidCallback *)v_int);
+	SYS_setHIntCallback((_voidCallback *)h_int);
 
 	// Now we can enable interrupts
 	SYS_enableInts();
@@ -61,45 +109,22 @@ void setup(void)
 
 const char* phrases[] = 
 {
-	"test1",
-	"test2",
-	"test3"
+	"         Getting more done after 2:00 AM than most people do all day.   ",
+	"                         Social versus Technical!                       ",
+	"             68K blows the '88 away! Welcome to Motorola Zone!          ",
+	"                        I said hey! What's going on?!                   ",
+	"      Why buy something when you can do it yourself for twice the cost? ",
+	"                       We're working on drink, we swear!                ",
+	"         Lean synergy-driven agile development to leverage our product. ",
+	"                          Can you hear my microphone?                   ",
+	"                         Microsoft wouldn't do that...                  ",
+	0
+
 };
 
-void print_phrase(u16 p)
+static inline void print_phrase(u16 p)
 {
-	col_puts(0,26,"                                                                                        ");
-	switch(p)
-	{
-		case 0:
-			col_puts(0,26,"         Getting more done after 2:00 AM than most people do all day.");
-			break;
-		case 1:
-			col_puts(0,26,"                         Social versus Technical!  ");
-			break;
-		case 2:
-			col_puts(0,26,"             68K blows the '88 away! Welcome to Motorola Zone!     ");
-			break;
-		case 3:
-			col_puts(0,26,"                        I said hey! What's going on?!       ");
-			break;
-		case 4:
-			col_puts(0,26,"      Why buy something when you can do it yourself for twice the cost? ");
-			break;
-		case 5:
-			col_puts(0,26,"                       We're working on drink, we swear!   ");
-			break;
-		case 6:
-			col_puts(0,26,"         Lean synergy-driven agile development to leverage our product.  ");
-			break;
-		case 7:
-			col_puts(0,26,"                          Can you hear my microphone? ");
-			break;
-		case 8:
-			col_puts(0,26,"                         Microsoft wouldn't do that... ");
-			break;
-
-	}
+	col_puts(0,26,phrases[p]);
 }
 
 #define NUM_STARS 64
@@ -114,10 +139,24 @@ struct star
 	u8 offset;
 };
 
+static void process_stars(star *stars)
+{
+	for (int i = 0; i < NUM_STARS; i++)
+	{
+		stars[i].x = stars[i].x + stars[i].speed;
+		if (stars[i].x >= 320)
+		{
+			stars[i].x = 0;
+			stars[i].y = GET_HVCOUNTER%256;
+		}
+		sprite_put(stars[i].x, stars[i].y,  SPRITE_SIZE(1,1), stars[i].size);
+	}
+}
+
 int main(void)
 {
-	u16 assholes = 0;
 	u16 delay_mod = 4;
+	u16 col_inc_cnt = 0;
 	setup();
 	VDP_setPaletteColor(0,0x000);
 	VDP_setPaletteColor(1,0x444);
@@ -149,33 +188,26 @@ int main(void)
 	VDP_setHInterrupt(1);
 	for (;;)
 	{
-		VDP_waitVSync();
-		VDP_setHInterrupt(0);
-		sprites_dma(NUM_STARS + 1);
-		VDP_setHInterrupt(1);
 		delay++;
-
-		/*
-		if (delay % 128 == 0)
+		if (col_inc_cnt == 0)
 		{
-			delay_mod = delay_mod >> 1;
-			if (delay_mod == 1)
-			{
-
-				delay_mod = 32;
-			}
+			col_inc_cnt = hint_val;
+			col_off += 0x002;
 		}
-		*/
-		if (delay == 2048)
+		else
+		{
+			col_inc_cnt--;
+		}
+		if (delay == 512)
 		{
 			if (phrase_num == 8)
 			{
 				phrase_num = 0;
 			}
 			hint_val++;
-			if (hint_val == 12)
+			if (hint_val == 10)
 			{
-				hint_val = 2;
+				hint_val = 3;
 			}
 			delay_mod = delay_mod >> 1;
 			if (delay_mod == 0)
@@ -189,28 +221,18 @@ int main(void)
 			phrase_num++;
 
 			delay = 0;
-		}		
-		if (delay % delay_mod == 0)
-		{
-			col_off += 0x002;
+		}	
+		process_stars(&stars);
+		while (vbl_wait)
+		{	
+			__asm__("nop");
 		}
-
-
-		for (i = 0; i < NUM_STARS; i++)
-		{
-			stars[i].x = stars[i].x + stars[i].speed;
-			if (stars[i].x >= 320)
-			{
-				stars[i].x = 0;
-				stars[i].y = stars[i].y + stars[i].offset;
-			}
-			if (stars[i].y > 256)
-			{
-				stars[i].y-=256;
-			}
-			sprite_set(i, stars[i].x, stars[i].y,  SPRITE_SIZE(1,1), stars[i].size,i + 1);
-		}
-
+		VDP_setHInterrupt(0);
+		VDP_setPaletteColor(14,palette[col]);
+		col = col_off;
+		vbl_wait = 1;
+		sprites_dma_simple();
+		VDP_setHInterrupt(1);
 	}
 	return 0;	
 }

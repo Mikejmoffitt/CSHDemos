@@ -1,0 +1,1213 @@
+         U lzkn_unpack
+00000000 A __DYNAMIC
+00200000 t _Entry_Point
+00200010 t cram
+0020002e t Table
+00200048 t continue
+002000a2 t _Bus_Error
+002000b2 t _Address_Error
+002000c2 t _Illegal_Instruction
+002000d2 t _Zero_Divide
+002000e2 t _Chk_Instruction
+002000f2 t _Trapv_Instruction
+00200102 t _Privilege_Violation
+00200112 t _Trace
+00200122 t _Line_1010_Emulation
+00200122 t _Line_1111_Emulation
+00200132 t _Error_Exception
+00200142 t _INT
+00200152 t _HBL
+00200162 t _VBL
+00200172 t ldiv
+0020017c t ld1
+0020018c t ld2
+0020019a t ld3
+0020019c t lmul
+002001a6 t lm1
+002001b6 t lm2
+002001c4 t lm3
+002001c6 t lrem
+002001d0 t lr1
+002001da t lr2
+002001ea t lr3
+002001ec t ldivu
+002001fa t lmulu
+00200208 t lremu
+00200218 t i_lmul
+00200234 t i_ldiv
+00200244 t nz1
+00200258 t is1
+00200260 t norm
+00200270 t not1
+0020028a t slow
+002002b6 t slower
+002002ba t moreadj
+002002c8 t adj
+002002d2 t ltuns
+002002e4 00000002 T _trace_callback
+002002e6 00000002 T _line1x1x_callback
+002002e8 00000002 T _int_callback
+002002ea 00000030 T _extint_callback
+0020031a 00000042 t addValueU32
+0020035c 00000064 t showValueU32U32U32
+002003c0 00000054 t showValueU32U32
+00200414 00000106 t showRegisterState
+0020051a 00000046 t addValueU16
+00200560 000000aa t showStackState
+0020060a 000000ce t showBusAddressErrorDump
+002006d8 00000028 T _buserror_callback
+00200700 00000028 T _addresserror_callback
+00200728 0000008c t showException4WDump
+002007b4 00000028 T _illegalinst_callback
+002007dc 00000028 T _chkinst_callback
+00200804 00000028 T _trapvinst_callback
+0020082c 000000d8 T _vint_callback
+00200904 00000056 T _hint_callback
+0020095a 00000066 t internal_reset
+002009c0 00000074 t showExceptionDump
+00200a34 00000028 T _zerodivide_callback
+00200a5c 00000028 T _privilegeviolation_callback
+00200a84 00000028 T _errorexception_callback
+00200aac 000000b4 T _start_entry
+00200b60 00000010 T _reset_entry
+00200b70 00000030 T SYS_disableInts
+00200ba0 0000002c T SYS_enableInts
+00200bcc 0000000a T SYS_setVIntCallback
+00200bd6 0000000a T SYS_setHIntCallback
+00200be0 0000000a T SYS_setExtIntCallback
+00200bea 0000000c T SYS_isInVIntCallback
+00200bf6 0000000c T SYS_isInHIntCallback
+00200c02 0000000c T SYS_isInExtIntCallback
+00200c0e 00000008 T SYS_isInInterrupt
+00200c16 00000054 T SYS_die
+00200c6c 00000020 T VDP_getReg
+00200c8c 00000158 T VDP_setReg
+00200de4 0000000c T VDP_getEnable
+00200df0 0000002c T VDP_setEnable
+00200e1c 00000016 T VDP_getScanlineNumber
+00200e32 00000008 T VDP_getScreenHeight
+00200e3a 00000026 T VDP_setScreenHeight224
+00200e60 00000032 T VDP_setScreenHeight240
+00200e92 00000008 T VDP_getScreenWidth
+00200e9a 00000026 T VDP_setScreenWidth256
+00200ec0 00000026 T VDP_setScreenWidth320
+00200ee6 00000014 T VDP_getPlanWidth
+00200efa 00000012 T VDP_getPlanHeight
+00200f0c 00000034 T VDP_setPlanSize
+00200f40 0000000e T VDP_getVerticalScrollingMode
+00200f4e 0000000c T VDP_getHorizontalScrollingMode
+00200f5a 00000032 T VDP_setScrollingMode
+00200f8c 00000008 T VDP_getBackgroundColor
+00200f94 0000001e T VDP_setBackgroundColor
+00200fb2 00000008 T VDP_getAutoInc
+00200fba 0000001a T VDP_setAutoInc
+00200fd4 0000002c T VDP_setHInterrupt
+00201000 0000002c T VDP_setHilightShadow
+0020102c 00000008 T VDP_getHIntCounter
+00201034 0000001a T VDP_setHIntCounter
+0020104e 00000008 T VDP_getAPlanAddress
+00201056 00000008 T VDP_getBPlanAddress
+0020105e 00000008 T VDP_getWindowAddress
+00201066 00000008 T VDP_getWindowPlanAddress
+0020106e 00000008 T VDP_getSpriteListAddress
+00201076 00000008 T VDP_getHScrollTableAddress
+0020107e 00000024 T VDP_setAPlanAddress
+002010a2 00000042 T VDP_setWindowAddress
+002010e4 00000010 T VDP_setWindowPlanAddress
+002010f4 00000024 T VDP_setBPlanAddress
+00201118 00000042 T VDP_setSpriteListAddress
+0020115a 00000026 T VDP_setHScrollTableAddress
+00201180 00000048 T VDP_setScanMode
+002011c8 0000000e T VDP_waitDMACompletion
+002011d6 00000202 T VDP_init
+002013d8 0000000e T VDP_waitFIFOEmpty
+002013e6 0000001a T VDP_waitVSync
+00201400 00000074 T VDP_resetScreen
+00201474 0000007e T VDP_showFPS
+002014f4 0000002c T PSG_init
+00201520 0000000a T PSG_write
+0020152a 00000020 T PSG_setEnvelope
+0020154a 00000030 T PSG_setTone
+0020157a 00000066 T PSG_setFrequency
+002015e0 00000028 T PSG_setNoise
+00201608 00000068 T getFPS
+00201670 00000082 T getFPS_f
+002016f2 00000024 T KLog
+00201716 0000004c T KLog_U1
+00201762 0000006e T KLog_U2
+002017d0 0000008c T KLog_U3
+0020185c 000000a8 T KLog_U4
+00201904 00000050 T KLog_U1x
+00201954 00000070 T KLog_U2x
+002019c4 0000008c T KLog_U3x
+00201a50 000000a6 T KLog_U4x
+00201af6 0000004c T KLog_S1
+00201b42 0000006e T KLog_S2
+00201bb0 0000008c T KLog_S3
+00201c3c 000000a8 T KLog_S4
+00201ce4 00000050 T KLog_S1x
+00201d34 00000070 T KLog_S2x
+00201da4 0000008c T KLog_S3x
+00201e30 000000a6 T KLog_S4x
+00201ed6 00000050 T KLog_f1
+00201f26 00000076 T KLog_f2
+00201f9c 00000098 T KLog_f3
+00202034 000000b8 T KLog_f4
+002020ec 00000054 T KLog_f1x
+00202140 00000078 T KLog_f2x
+002021b8 00000098 T KLog_f3x
+00202250 000000b6 T KLog_f4x
+00202306 0000004c T KLog_F1
+00202352 0000006e T KLog_F2
+002023c0 0000008c T KLog_F3
+0020244c 000000a8 T KLog_F4
+002024f4 00000050 T KLog_F1x
+00202544 00000070 T KLog_F2x
+002025b4 0000008c T KLog_F3x
+00202640 000000a6 T KLog_F4x
+002026e6 0000005c T allocateBitmap
+00202742 00000040 T allocateTileSet
+00202782 00000046 T allocateMap
+002027c8 000000d8 T allocateImage
+002028a0 00000044 T rle4b_unpack
+002028e4 00000084 T rlemap_unpack
+00202968 00000048 T unpack
+002029b0 00000052 T unpackBitmap
+00202a02 00000046 T unpackTileSet
+00202a48 0000004c T unpackMap
+00202a94 00000052 T unpackImage
+00202ae6 00000074 T rle4b_unpackVRam
+00202b5c 00000028 T MEM_init
+00202b84 0000002a T MEM_getFree
+00202bae 00000012 T MEM_free
+00202bc0 000000de T MEM_alloc
+00202c9e 0000001e T memcpyU16
+00202cbc 00000020 T memcpyU32
+00202cdc 00000020 T fastMemset
+00202cfc 00000020 T fastMemsetU16
+00202d1c 0000001c T fastMemsetU32
+00202d38 0000001c T fastMemcpy
+00202d54 0000001e T fastMemcpyU16
+00202d72 00000020 T fastMemcpyU32
+00202d94 00000020 T random
+00202db4 00000094 T intToBCD
+00202e48 00000052 T distance_approx
+00202e9a 00000082 T Partition_u8
+00202f1c 0000004e T QSort_u8
+00202f6a 00000082 T Partition_s8
+00202fec 0000004e T QSort_s8
+0020303a 00000090 T Partition_u16
+002030ca 0000004e T QSort_u16
+00203118 00000090 T Partition_s16
+002031a8 0000004e T QSort_s16
+002031f6 000000ac T Partition_u32
+002032a2 0000004e T QSort_u32
+002032f0 000000ac T Partition_s32
+0020339c 0000004e T QSort_s32
+002033ec 00000052 T getSubTick
+0020343e 0000002c T getTick
+0020346a 00000022 T getTime
+0020348c 00000014 T getTimeAsFix32
+002034a0 00000022 T startTimer
+002034c2 00000044 T getTimer
+00203506 00000048 T waitSubTick
+0020354e 00000042 T waitTick
+00203590 00000030 T waitMs
+002035c0 00000012 T Z80_isBusTaken
+002035d2 00000032 T Z80_requestBus
+00203604 0000000a T Z80_releaseBus
+0020360e 0000000a T Z80_startReset
+00203618 0000000a T Z80_endReset
+00203622 00000014 T Z80_setBank
+00203636 00000018 T Z80_init
+0020364e 00000012 T Z80_read
+00203660 00000014 T Z80_write
+00203674 00000078 T Z80_clear
+002036ec 00000074 T Z80_upload
+00203760 00000058 T Z80_download
+002037b8 00000008 T Z80_getLoadedDriver
+002037c0 00000022 T Z80_unloadDriver
+002037e2 00000034 T Z80_loadCustomDriver
+00203816 00000036 T Z80_isDriverReady
+0020384c 000002fc T Z80_loadDriver
+00203b48 0000001a T YM2612_read
+00203b62 00000024 T YM2612_write
+00203b86 000000ea T YM2612_reset
+00203c70 00000018 T YM2612_writeSafe
+00203c88 00000052 T YM2612_writeReg
+00203cda 00000022 T YM2612_writeRegSafe
+00203cfc 00000020 T YM2612_enableDAC
+00203d1c 0000001e T YM2612_disableDAC
+00203d3c 000000ca t setFadePalette
+00203e06 00000034 T VDP_getPaletteColor
+00203e3a 0000003e T VDP_setPaletteColor
+00203e78 000000da T VDP_doStepFading
+00203f52 00000156 T VDP_initFading
+002040a8 00000012 T VDP_interruptFade
+002040ba 00000070 T VDP_fade
+0020412a 00000060 T VDP_fadeTo
+0020418a 00000030 T VDP_fadeOut
+002041ba 00000034 T VDP_fadeIn
+002041ee 0000003c T VDP_fadePal
+0020422a 00000038 T VDP_fadePalTo
+00204262 0000003a T VDP_fadePalOut
+0020429c 0000003e T VDP_fadePalIn
+002042da 00000028 T VDP_fadeAll
+00204302 00000024 T VDP_fadeAllTo
+00204326 00000026 T VDP_fadeOutAll
+0020434c 0000002a T VDP_fadeInAll
+00204376 0000000c T VDP_isDoingFade
+00204382 0000000e T VDP_waitFadeCompletion
+00204390 000000a4 T VDP_loadTileSet
+00204434 00000030 T VDP_loadFontData
+00204464 00000026 T VDP_loadFont
+0020448a 00000054 T VDP_loadBMPTileDataEx
+002044de 000000ba T VDP_fillTileData
+00204598 0000003e T VDP_setTileMap
+002045d6 00000066 T VDP_setTileMapXY
+0020463c 0000009c T VDP_fillTileMap
+002046d8 0000002a T VDP_fillTileMapRectByIndex
+00204702 000000a6 T VDP_fillTileMapRect
+002047a8 00000054 T VDP_clearTileMap
+002047fc 0000002a T VDP_clearTileMapRectByIndex
+00204826 00000034 T VDP_clearTileMapRect
+0020485a 000000ca T VDP_fillTileMapInc
+00204924 0000002a T VDP_fillTileMapRectIncByIndex
+0020494e 000000ac T VDP_fillTileMapRectInc
+002049fa 000000e4 T VDP_setTileMapData
+00204ade 0000002e T VDP_setTileMapRectByIndex
+00204b0c 000000b8 T VDP_setTileMapDataRect
+00204bc4 000000f2 T VDP_setTileMapDataEx
+00204cb6 00000032 T VDP_setTileMapRectExByIndex
+00204ce8 000000e6 T VDP_setTileMapDataRectEx
+00204dce 00000044 T VDP_setTileMapRectEx
+00204e12 000000c8 T VDP_setMapEx
+00204eda 00000044 T VDP_setMap
+00204f20 00000018 T VDP_resetSprites
+00204f38 0000005c T VDP_setSprite
+00204f94 0000004c T VDP_setSpriteP
+00204fe0 00000082 T VDP_setSpriteDirect
+00205062 00000082 T VDP_setSpriteDirectP
+002050e4 00000040 T VDP_setSpritePosition
+00205124 00000092 T VDP_setSpritesDirect
+002051b6 00000072 T VDP_setSprites
+00205228 000000a2 T VDP_updateSprites
+002052cc 00000150 T VDP_doDMAEx
+0020541c 0000002a T VDP_doDMA
+00205446 00000074 T VDP_doVRamDMAFill
+002054ba 00000078 T VDP_doVRamDMACopy
+00205534 00000034 t flipBuffer
+00205568 00000120 t initTilemap
+00205688 00000064 T BMP_end
+002056ec 0000000e T BMP_hasFlipRequestPending
+002056fa 00000010 T BMP_waitWhileFlipRequestPending
+0020570a 0000000c T BMP_hasFlipInProgess
+00205716 00000010 T BMP_waitFlipComplete
+00205726 00000052 T BMP_flip
+00205778 0000005e T BMP_drawText
+002057d6 0000005c T BMP_clearText
+00205832 00000040 T BMP_clearTextLine
+00205872 000000d2 T BMP_showFPS
+00205944 00000010 T BMP_clear
+00205954 00000122 T BMP_reset
+00205a76 0000003e T BMP_init
+00205ab4 00000026 T BMP_getWritePointer
+00205ada 00000026 T BMP_getReadPointer
+00205b00 00000038 T BMP_getPixel
+00205b38 00000038 T BMP_setPixel
+00205b70 00000050 T BMP_setPixels_V2D
+00205bc0 0000005a T BMP_setPixels
+00205c1a 000000a2 T BMP_drawBitmapData
+00205cbc 000000d4 T BMP_drawBitmap
+00205d90 00000032 T BMP_loadBitmapData
+00205dc2 00000026 T BMP_loadBitmap
+00205de8 0000001c T BMP_getBitmapPalette
+00205e04 000000da T BMP_scale
+00205ede 0000010a T BMP_drawBitmapScaled
+00205fe8 00000036 T BMP_loadAndScaleBitmap
+0020601e 0000000a T BMP_doVBlankProcess
+00206028 0000062a T BMP_doHBlankProcess
+00206654 00000090 t addToUploadQueue
+002066e4 00000038 T TC_init
+0020671c 00000072 T TC_end
+0020678e 00000046 T TC_createCacheEx
+002067d4 00000022 T TC_createCache
+002067f6 00000012 T TC_releaseCache
+00206808 00000012 T TC_clearCache
+0020681a 0000000a T TC_flushCache
+00206824 000002ea T TC_alloc
+00206b0e 0000008c T TC_reAlloc
+00206b9a 0000007a T TC_free
+00206c14 0000004e T TC_getTileIndex
+00206c62 00000034 T TC_uploadAtVBlank
+00206c96 0000006c T TC_doVBlankProcess
+00206d04 0000004c T VDP_setHorizontalScroll
+00206d50 000000a6 T VDP_setHorizontalScrollTile
+00206df6 000000a6 T VDP_setHorizontalScrollLine
+00206e9c 0000003e T VDP_setVerticalScroll
+00206eda 00000096 T VDP_setVerticalScrollTile
+00206f70 000000b6 T VDP_clearPlan
+00207026 0000001c T VDP_getTextPlan
+00207042 00000010 T VDP_getTextPalette
+00207052 0000000c T VDP_getTextPriority
+0020705e 00000024 T VDP_setTextPlan
+00207082 00000020 T VDP_setTextPalette
+002070a2 0000001e T VDP_setTextPriority
+002070c0 000000ac T VDP_drawTextBG
+0020716c 00000032 T VDP_clearTextBG
+0020719e 00000036 T VDP_clearTextLineBG
+002071d4 00000034 T VDP_drawText
+00207208 0000002e T VDP_clearText
+00207236 0000001c T VDP_clearTextLine
+00207252 00000110 T VDP_drawBitmapEx
+00207362 00000088 T VDP_drawBitmap
+002073ea 000000a0 T VDP_drawImageEx
+0020748a 0000007e T VDP_drawImage
+00207508 T memset
+00207580 T memsetU16
+002075de T memsetU32
+0020761c T memcpy
+00207700 T smp_null_pcm
+00207780 T VDP_loadTileData
+002077fc T VDP_loadBMPTileData
+00207884 T VDP_getPaletteColors
+002078ea T VDP_setPaletteColors
+00207950 T VDP_getPalette
+00207998 T VDP_setPalette
+002079e0 T SYS_assertReset
+002079e4 T SYS_reset
+002079f2 T SYS_getInterruptMaskLevel
+002079fc T SYS_setInterruptMaskLevel
+00207a0e T SYS_getAndSetInterruptMaskLevel
+00207a28 T KDebug_Halt
+00207a32 T KDebug_Alert
+00207a4e T KDebug_AlertNumber
+00207a56 t numLoop
+00207a6e t number
+00207a76 t letter
+00207a7c t ascii
+00207a9c T KDebug_StartTimer
+00207aa6 T KDebug_StopTimer
+00207b00 T smp_null
+00207c00 T clearBitmapBuffer
+00207c6a t clipLine
+00207d42 T BMP_clipLine
+00207d5e T BMP_drawLine
+00207dce T BMP_isPolygonCulled
+00207dfa t fillEdge
+00207e18 t .fe_fill_base2
+00207e20 t .fe_fill_table
+002080a4 t .fe_fill_160
+002080a8 t .fe_fill_159
+002080ac t .fe_fill_158
+002080b0 t .fe_fill_157
+002080b4 t .fe_fill_156
+002080b8 t .fe_fill_155
+002080bc t .fe_fill_154
+002080c0 t .fe_fill_153
+002080c4 t .fe_fill_152
+002080c8 t .fe_fill_151
+002080cc t .fe_fill_150
+002080d0 t .fe_fill_149
+002080d4 t .fe_fill_148
+002080d8 t .fe_fill_147
+002080dc t .fe_fill_146
+002080e0 t .fe_fill_145
+002080e4 t .fe_fill_144
+002080e8 t .fe_fill_143
+002080ec t .fe_fill_142
+002080f0 t .fe_fill_141
+002080f4 t .fe_fill_140
+002080f8 t .fe_fill_139
+002080fc t .fe_fill_138
+00208100 t .fe_fill_137
+00208104 t .fe_fill_136
+00208108 t .fe_fill_135
+0020810c t .fe_fill_134
+00208110 t .fe_fill_133
+00208114 t .fe_fill_132
+00208118 t .fe_fill_131
+0020811c t .fe_fill_130
+00208120 t .fe_fill_129
+00208124 t .fe_fill_128
+00208128 t .fe_fill_127
+0020812c t .fe_fill_126
+00208130 t .fe_fill_125
+00208134 t .fe_fill_124
+00208138 t .fe_fill_123
+0020813c t .fe_fill_122
+00208140 t .fe_fill_121
+00208144 t .fe_fill_120
+00208148 t .fe_fill_119
+0020814c t .fe_fill_118
+00208150 t .fe_fill_117
+00208154 t .fe_fill_116
+00208158 t .fe_fill_115
+0020815c t .fe_fill_114
+00208160 t .fe_fill_113
+00208164 t .fe_fill_112
+00208168 t .fe_fill_111
+0020816c t .fe_fill_110
+00208170 t .fe_fill_109
+00208174 t .fe_fill_108
+00208178 t .fe_fill_107
+0020817c t .fe_fill_106
+00208180 t .fe_fill_105
+00208184 t .fe_fill_104
+00208188 t .fe_fill_103
+0020818c t .fe_fill_102
+00208190 t .fe_fill_101
+00208194 t .fe_fill_100
+00208198 t .fe_fill_99
+0020819c t .fe_fill_98
+002081a0 t .fe_fill_97
+002081a4 t .fe_fill_96
+002081a8 t .fe_fill_95
+002081ac t .fe_fill_94
+002081b0 t .fe_fill_93
+002081b4 t .fe_fill_92
+002081b8 t .fe_fill_91
+002081bc t .fe_fill_90
+002081c0 t .fe_fill_89
+002081c4 t .fe_fill_88
+002081c8 t .fe_fill_87
+002081cc t .fe_fill_86
+002081d0 t .fe_fill_85
+002081d4 t .fe_fill_84
+002081d8 t .fe_fill_83
+002081dc t .fe_fill_82
+002081e0 t .fe_fill_81
+002081e4 t .fe_fill_80
+002081e8 t .fe_fill_79
+002081ec t .fe_fill_78
+002081f0 t .fe_fill_77
+002081f4 t .fe_fill_76
+002081f8 t .fe_fill_75
+002081fc t .fe_fill_74
+00208200 t .fe_fill_73
+00208204 t .fe_fill_72
+00208208 t .fe_fill_71
+0020820c t .fe_fill_70
+00208210 t .fe_fill_69
+00208214 t .fe_fill_68
+00208218 t .fe_fill_67
+0020821c t .fe_fill_66
+00208220 t .fe_fill_65
+00208224 t .fe_fill_64
+00208228 t .fe_fill_63
+0020822c t .fe_fill_62
+00208230 t .fe_fill_61
+00208234 t .fe_fill_60
+00208238 t .fe_fill_59
+0020823c t .fe_fill_58
+00208240 t .fe_fill_57
+00208244 t .fe_fill_56
+00208248 t .fe_fill_55
+0020824c t .fe_fill_54
+00208250 t .fe_fill_53
+00208254 t .fe_fill_52
+00208258 t .fe_fill_51
+0020825c t .fe_fill_50
+00208260 t .fe_fill_49
+00208264 t .fe_fill_48
+00208268 t .fe_fill_47
+0020826c t .fe_fill_46
+00208270 t .fe_fill_45
+00208274 t .fe_fill_44
+00208278 t .fe_fill_43
+0020827c t .fe_fill_42
+00208280 t .fe_fill_41
+00208284 t .fe_fill_40
+00208288 t .fe_fill_39
+0020828c t .fe_fill_38
+00208290 t .fe_fill_37
+00208294 t .fe_fill_36
+00208298 t .fe_fill_35
+0020829c t .fe_fill_34
+002082a0 t .fe_fill_33
+002082a4 t .fe_fill_32
+002082a8 t .fe_fill_31
+002082ac t .fe_fill_30
+002082b0 t .fe_fill_29
+002082b4 t .fe_fill_28
+002082b8 t .fe_fill_27
+002082bc t .fe_fill_26
+002082c0 t .fe_fill_25
+002082c4 t .fe_fill_24
+002082c8 t .fe_fill_23
+002082cc t .fe_fill_22
+002082d0 t .fe_fill_21
+002082d4 t .fe_fill_20
+002082d8 t .fe_fill_19
+002082dc t .fe_fill_18
+002082e0 t .fe_fill_17
+002082e4 t .fe_fill_16
+002082e8 t .fe_fill_15
+002082ec t .fe_fill_14
+002082f0 t .fe_fill_13
+002082f4 t .fe_fill_12
+002082f8 t .fe_fill_11
+002082fc t .fe_fill_10
+00208300 t .fe_fill_9
+00208304 t .fe_fill_8
+00208308 t .fe_fill_7
+0020830c t .fe_fill_6
+00208310 t .fe_fill_5
+00208314 t .fe_fill_4
+00208318 t .fe_fill_3
+0020831c t .fe_fill_2
+00208320 t .fe_fill_1
+00208322 t .fe_fill_0
+00208324 t fillEdgeFast
+0020832e t .fef_fill_base
+00208334 t .fef_fill_table
+002085b8 t .fef_fill_160
+002085ba t .fef_fill_158
+002085bc t .fef_fill_156
+002085be t .fef_fill_154
+002085c0 t .fef_fill_152
+002085c2 t .fef_fill_150
+002085c4 t .fef_fill_148
+002085c6 t .fef_fill_146
+002085c8 t .fef_fill_144
+002085ca t .fef_fill_142
+002085cc t .fef_fill_140
+002085ce t .fef_fill_138
+002085d0 t .fef_fill_136
+002085d2 t .fef_fill_134
+002085d4 t .fef_fill_132
+002085d6 t .fef_fill_130
+002085d8 t .fef_fill_128
+002085da t .fef_fill_126
+002085dc t .fef_fill_124
+002085de t .fef_fill_122
+002085e0 t .fef_fill_120
+002085e2 t .fef_fill_118
+002085e4 t .fef_fill_116
+002085e6 t .fef_fill_114
+002085e8 t .fef_fill_112
+002085ea t .fef_fill_110
+002085ec t .fef_fill_108
+002085ee t .fef_fill_106
+002085f0 t .fef_fill_104
+002085f2 t .fef_fill_102
+002085f4 t .fef_fill_100
+002085f6 t .fef_fill_98
+002085f8 t .fef_fill_96
+002085fa t .fef_fill_94
+002085fc t .fef_fill_92
+002085fe t .fef_fill_90
+00208600 t .fef_fill_88
+00208602 t .fef_fill_86
+00208604 t .fef_fill_84
+00208606 t .fef_fill_82
+00208608 t .fef_fill_80
+0020860a t .fef_fill_78
+0020860c t .fef_fill_76
+0020860e t .fef_fill_74
+00208610 t .fef_fill_72
+00208612 t .fef_fill_70
+00208614 t .fef_fill_68
+00208616 t .fef_fill_66
+00208618 t .fef_fill_64
+0020861a t .fef_fill_62
+0020861c t .fef_fill_60
+0020861e t .fef_fill_58
+00208620 t .fef_fill_56
+00208622 t .fef_fill_54
+00208624 t .fef_fill_52
+00208626 t .fef_fill_50
+00208628 t .fef_fill_48
+0020862a t .fef_fill_46
+0020862c t .fef_fill_44
+0020862e t .fef_fill_42
+00208630 t .fef_fill_40
+00208632 t .fef_fill_38
+00208634 t .fef_fill_36
+00208636 t .fef_fill_34
+00208638 t .fef_fill_32
+0020863a t .fef_fill_30
+0020863c t .fef_fill_28
+0020863e t .fef_fill_26
+00208640 t .fef_fill_24
+00208642 t .fef_fill_22
+00208644 t .fef_fill_20
+00208646 t .fef_fill_18
+00208648 t .fef_fill_16
+0020864a t .fef_fill_14
+0020864c t .fef_fill_12
+0020864e t .fef_fill_10
+00208650 t .fef_fill_8
+00208652 t .fef_fill_6
+00208654 t .fef_fill_4
+00208656 t .fef_fill_2
+00208658 t .fef_fill_0
+0020865a t .fef_fill_159
+0020865c t .fef_fill_157
+0020865e t .fef_fill_155
+00208660 t .fef_fill_153
+00208662 t .fef_fill_151
+00208664 t .fef_fill_149
+00208666 t .fef_fill_147
+00208668 t .fef_fill_145
+0020866a t .fef_fill_143
+0020866c t .fef_fill_141
+0020866e t .fef_fill_139
+00208670 t .fef_fill_137
+00208672 t .fef_fill_135
+00208674 t .fef_fill_133
+00208676 t .fef_fill_131
+00208678 t .fef_fill_129
+0020867a t .fef_fill_127
+0020867c t .fef_fill_125
+0020867e t .fef_fill_123
+00208680 t .fef_fill_121
+00208682 t .fef_fill_119
+00208684 t .fef_fill_117
+00208686 t .fef_fill_115
+00208688 t .fef_fill_113
+0020868a t .fef_fill_111
+0020868c t .fef_fill_109
+0020868e t .fef_fill_107
+00208690 t .fef_fill_105
+00208692 t .fef_fill_103
+00208694 t .fef_fill_101
+00208696 t .fef_fill_99
+00208698 t .fef_fill_97
+0020869a t .fef_fill_95
+0020869c t .fef_fill_93
+0020869e t .fef_fill_91
+002086a0 t .fef_fill_89
+002086a2 t .fef_fill_87
+002086a4 t .fef_fill_85
+002086a6 t .fef_fill_83
+002086a8 t .fef_fill_81
+002086aa t .fef_fill_79
+002086ac t .fef_fill_77
+002086ae t .fef_fill_75
+002086b0 t .fef_fill_73
+002086b2 t .fef_fill_71
+002086b4 t .fef_fill_69
+002086b6 t .fef_fill_67
+002086b8 t .fef_fill_65
+002086ba t .fef_fill_63
+002086bc t .fef_fill_61
+002086be t .fef_fill_59
+002086c0 t .fef_fill_57
+002086c2 t .fef_fill_55
+002086c4 t .fef_fill_53
+002086c6 t .fef_fill_51
+002086c8 t .fef_fill_49
+002086ca t .fef_fill_47
+002086cc t .fef_fill_45
+002086ce t .fef_fill_43
+002086d0 t .fef_fill_41
+002086d2 t .fef_fill_39
+002086d4 t .fef_fill_37
+002086d6 t .fef_fill_35
+002086d8 t .fef_fill_33
+002086da t .fef_fill_31
+002086dc t .fef_fill_29
+002086de t .fef_fill_27
+002086e0 t .fef_fill_25
+002086e2 t .fef_fill_23
+002086e4 t .fef_fill_21
+002086e6 t .fef_fill_19
+002086e8 t .fef_fill_17
+002086ea t .fef_fill_15
+002086ec t .fef_fill_13
+002086ee t .fef_fill_11
+002086f0 t .fef_fill_9
+002086f2 t .fef_fill_7
+002086f4 t .fef_fill_5
+002086f6 t .fef_fill_3
+002086f8 t .fef_fill_1
+002086fc T BMP_drawPolygon
+00208724 t .DP_pts_loop
+0020873c t .DP_find_ymax
+00208742 t .DP_find_xmin
+00208750 t .DP_find_xmax
+00208756 t .DP_pts_loop_next
+0020875a t .DP_pts_loop_done
+00208786 t .DP_sl_xmin_ok
+0020878c t .DP_sl_xmax_ok
+0020879e t .DP_end0
+002087a6 t .DP_no_single_line
+002087ac t .DP_ymax_ok
+002087c2 t .DP_lnc_first
+002087c8 t .DP_lnc_y1l_loop
+002087d0 t .DP_lnc_y1l_next
+002087d6 t .DP_lnc_y1l_ok
+002087f2 t .DP_lnc_y0_ok
+002087fe t .DP_lnc_loop
+00208816 t .DP_lnc_y1h_nc
+0020882a t .DP_lnc_end0
+00208836 t .DP_lnc_y1h_ok
+00208848 t .DP_lnc_next
+00208852 t .DP_lnc_next_ok
+00208858 t .DP_lnc_done
+00208862 t .DP_rnc_first
+00208868 t .DP_rnc_y1l_loop
+00208870 t .DP_rnc_y1l_next
+00208876 t .DP_rnc_y1l_ok
+00208892 t .DP_rnc_y0_ok
+0020889e t .DP_rnc_loop
+002088b6 t .DP_rnc_y1h_nc
+002088ca t .DP_rnc_end0
+002088d6 t .DP_rnc_y1h_ok
+002088e8 t .DP_rnc_next
+002088f2 t .DP_rnc_next_ok
+002088f8 t .DP_rnc_done
+0020890c t .DP_XClip
+00208916 t .DP_l_first
+0020891c t .DP_l_y1l_loop
+00208924 t .DP_l_y1l_next
+0020892a t .DP_l_y1l_ok
+00208946 t .DP_l_y0_ok
+0020894e t .DP_l_xl_loop
+00208964 t .DP_l_xl_next
+0020896c t .DP_l_x0_clip
+00208982 t .DP_l_xl_ok
+0020898e t .DP_l_loop
+002089a4 t .DP_l_y1_ok
+002089c0 t .DP_l_x0n_x1p
+002089de t .DP_l_end0
+002089ea t .DP_l_x0p
+00208a0e t .DP_l_x1n_1
+00208a1e t .DP_l_test_x1p
+00208a22 t .DP_l_x1p
+00208a48 t .DP_l_x1_ok
+00208a5a t .DP_l_next
+00208a68 t .DP_l_next_ok
+00208a70 t .DP_l_done
+00208a7a t .DP_r_first
+00208a80 t .DP_r_y1l_loop
+00208a88 t .DP_r_y1l_next
+00208a8e t .DP_r_y1l_ok
+00208aaa t .DP_r_y0_ok
+00208ab2 t .DP_r_xl_loop
+00208ac8 t .DP_r_xl_next
+00208ad0 t .DP_r_x0_clip
+00208ae4 t .DP_r_xl_ok
+00208af0 t .DP_r_loop
+00208b06 t .DP_r_y1_ok
+00208b22 t .DP_r_x0n_x1p
+00208b42 t .DP_r_end0
+00208b4e t .DP_r_x0p
+00208b76 t .DP_r_x1n_1
+00208b86 t .DP_r_test_x1p
+00208b8a t .DP_r_x1p
+00208ba0 t .DP_r_ymax_ok
+00208bb2 t .DP_r_x1_ok
+00208bc4 t .DP_r_next
+00208bd2 t .DP_r_next_ok
+00208bda t .DP_r_done
+00208be8 t .drawPolygon
+00208bea t .drawPolygon_SL
+00208c0c t .dp_odd_line
+00208c20 t .dp_293
+00208c26 t .dp_291
+00208c28 t .dp_292
+00208c2e t .dp_290
+00208c44 t .dp_179
+00208c5a t .dp_180
+00208c68 t .dp_163
+00208c6c t .dp_fill_base
+00208c72 t .dp_end0
+00208c8c t .dp_fill_table
+00208e9c t .dp_fill_128
+00208e9e t .dp_fill_124
+00208ea0 t .dp_fill_120
+00208ea2 t .dp_fill_116
+00208ea4 t .dp_fill_112
+00208ea6 t .dp_fill_108
+00208ea8 t .dp_fill_104
+00208eaa t .dp_fill_100
+00208eac t .dp_fill_96
+00208eae t .dp_fill_92
+00208eb0 t .dp_fill_88
+00208eb2 t .dp_fill_84
+00208eb4 t .dp_fill_80
+00208eb6 t .dp_fill_76
+00208eb8 t .dp_fill_72
+00208eba t .dp_fill_68
+00208ebc t .dp_fill_64
+00208ebe t .dp_fill_60
+00208ec0 t .dp_fill_56
+00208ec2 t .dp_fill_52
+00208ec4 t .dp_fill_48
+00208ec6 t .dp_fill_44
+00208ec8 t .dp_fill_40
+00208eca t .dp_fill_36
+00208ecc t .dp_fill_32
+00208ece t .dp_fill_28
+00208ed0 t .dp_fill_24
+00208ed2 t .dp_fill_20
+00208ed4 t .dp_fill_16
+00208ed6 t .dp_fill_12
+00208ed8 t .dp_fill_08
+00208eda t .dp_fill_04
+00208edc t .dp_175
+00208ef2 t .dp_fill_126
+00208ef4 t .dp_fill_122
+00208ef6 t .dp_fill_118
+00208ef8 t .dp_fill_114
+00208efa t .dp_fill_110
+00208efc t .dp_fill_106
+00208efe t .dp_fill_102
+00208f00 t .dp_fill_98
+00208f02 t .dp_fill_94
+00208f04 t .dp_fill_90
+00208f06 t .dp_fill_86
+00208f08 t .dp_fill_82
+00208f0a t .dp_fill_78
+00208f0c t .dp_fill_74
+00208f0e t .dp_fill_70
+00208f10 t .dp_fill_66
+00208f12 t .dp_fill_62
+00208f14 t .dp_fill_58
+00208f16 t .dp_fill_54
+00208f18 t .dp_fill_50
+00208f1a t .dp_fill_46
+00208f1c t .dp_fill_42
+00208f1e t .dp_fill_38
+00208f20 t .dp_fill_34
+00208f22 t .dp_fill_30
+00208f24 t .dp_fill_26
+00208f26 t .dp_fill_22
+00208f28 t .dp_fill_18
+00208f2a t .dp_fill_14
+00208f2c t .dp_fill_10
+00208f2e t .dp_fill_06
+00208f30 t .dp_fill_02
+00208f48 t .dp_fill_129
+00208f4a t .dp_fill_125
+00208f4c t .dp_fill_121
+00208f4e t .dp_fill_117
+00208f50 t .dp_fill_113
+00208f52 t .dp_fill_109
+00208f54 t .dp_fill_105
+00208f56 t .dp_fill_101
+00208f58 t .dp_fill_97
+00208f5a t .dp_fill_93
+00208f5c t .dp_fill_89
+00208f5e t .dp_fill_85
+00208f60 t .dp_fill_81
+00208f62 t .dp_fill_77
+00208f64 t .dp_fill_73
+00208f66 t .dp_fill_69
+00208f68 t .dp_fill_65
+00208f6a t .dp_fill_61
+00208f6c t .dp_fill_57
+00208f6e t .dp_fill_53
+00208f70 t .dp_fill_49
+00208f72 t .dp_fill_45
+00208f74 t .dp_fill_41
+00208f76 t .dp_fill_37
+00208f78 t .dp_fill_33
+00208f7a t .dp_fill_29
+00208f7c t .dp_fill_25
+00208f7e t .dp_fill_21
+00208f80 t .dp_fill_17
+00208f82 t .dp_fill_13
+00208f84 t .dp_fill_09
+00208f86 t .dp_fill_05
+00208fa0 t .dp_fill_127
+00208fa2 t .dp_fill_123
+00208fa4 t .dp_fill_119
+00208fa6 t .dp_fill_115
+00208fa8 t .dp_fill_111
+00208faa t .dp_fill_107
+00208fac t .dp_fill_103
+00208fae t .dp_fill_99
+00208fb0 t .dp_fill_95
+00208fb2 t .dp_fill_91
+00208fb4 t .dp_fill_87
+00208fb6 t .dp_fill_83
+00208fb8 t .dp_fill_79
+00208fba t .dp_fill_75
+00208fbc t .dp_fill_71
+00208fbe t .dp_fill_67
+00208fc0 t .dp_fill_63
+00208fc2 t .dp_fill_59
+00208fc4 t .dp_fill_55
+00208fc6 t .dp_fill_51
+00208fc8 t .dp_fill_47
+00208fca t .dp_fill_43
+00208fcc t .dp_fill_39
+00208fce t .dp_fill_35
+00208fd0 t .dp_fill_31
+00208fd2 t .dp_fill_27
+00208fd4 t .dp_fill_23
+00208fd6 t .dp_fill_19
+00208fd8 t .dp_fill_15
+00208fda t .dp_fill_11
+00208fdc t .dp_fill_07
+00208fde t .dp_fill_03
+00208fe0 t .dp_fill_01
+00208ff8 T aplib_unpack
+00208ffe T aplib_decrunch
+00209012 t .copy_byte
+00209014 t .next_sequence_init
+00209016 t .next_sequence
+00209026 t .get_3_bits
+00209036 t .write_byte
+0020903a t .short_match
+00209048 t .code_pair
+00209054 t .normal_code_pair
+00209062 t .compare_1280
+00209066 t .compare_128
+0020906a t .domatch_with_2inc
+0020906c t .domatch_with_inc
+0020906e t .domatch_new_lastpos
+00209070 t .copy_code_pair
+00209076 t .loop_do_copy
+00209080 t .get_bit
+00209088 t .still_bits_left
+0020908a t .decode_gamma
+0020908c t .get_more_gamma
+00209096 t .end_decrunch
+002090a0 T z80_drv1
+00209bc0 T z80_tfm
+0020a260 T z80_drv2
+0020b060 T z80_drv3
+0020bab8 T z80_xgm
+0020d1b8 T z80_mvs
+0020dc14 000000de t computeVisibility
+0020dcf2 0000004c t allocTileSet
+0020dd3e 00000050 t setFrame
+0020dd8e 0000006e T SPR_end
+0020ddfc 0000007c T SPR_init
+0020de78 0000000c T SPR_isInitialized
+0020de84 00000038 T SPR_setPosition
+0020debc 00000022 T SPR_setAttribut
+0020dede 0000006c T SPR_setAnimAndFrame
+0020df4a 00000060 T SPR_initSprite
+0020dfaa 00000058 T SPR_setAnim
+0020e002 0000005c T SPR_setFrame
+0020e05e 00000026 T SPR_nextFrame
+0020e084 00000028 T SPR_setVRAMTileIndex
+0020e0ac 00000026 T SPR_setAlwaysVisible
+0020e0d2 00000026 T SPR_setNeverVisible
+0020e0f8 00000016 T SPR_clear
+0020e10e 00000366 T SPR_update
+0020e474 0000003c T SPR_doVBlankProcess
+0020e4b0 0000001a T strlen
+0020e4ca 000000d2 t uintToStr_
+0020e59c 00000020 T strcmp
+0020e5bc 0000000a T strclr
+0020e5c6 00000012 T strcpy
+0020e5d8 0000001a T strcat
+0020e5f2 0000002e T intToStr
+0020e620 0000001c T uintToStr
+0020e63c 000000b4 T intToHex
+0020e6f0 00000080 T fix32ToStr
+0020e770 0000007a T fix16ToStr
+0020e7ec 000000ba t externalIntCB
+0020e8a6 0000001e t TH_CONTROL_PHASE
+0020e8c4 00000062 t read6Btn
+0020e926 0000005e t THREELINE_HANDSHAKE
+0020e984 000000b0 t start3lhs
+0020ea34 000001ae t readMouse
+0020ebe2 000002fc t readTeamPlayer
+0020eede 000002ea t readLightgun
+0020f1c8 000000bc t readTrackball
+0020f284 0000000a T JOY_setEventHandler
+0020f28e 00000438 T JOY_setSupport
+0020f6c6 00000340 T JOY_init
+0020fa06 00000020 T JOY_getPortType
+0020fa26 00000020 T JOY_getJoypadType
+0020fa46 00000050 T JOY_readJoypad
+0020fa96 00000022 T JOY_readJoypadX
+0020fab8 00000022 T JOY_readJoypadY
+0020fada 00000422 T JOY_update
+0020fefc 000000a6 T JOY_waitPressTime
+0020ffa2 00000016 T JOY_waitPressBtn
+0020ffb8 0000001c T JOY_waitPressBtnTime
+0020ffd4 0000001c T JOY_waitPress
+0020fff0 00000004 T getZeroU8
+0020fff4 00000004 T getZeroU16
+0020fff8 00000004 T getZeroU32
+0020fffc T __mulsi3
+00210020 T __udivsi3
+00210048 t L3
+0021004a t L4
+00210076 t L5
+00210078 t L6
+0021007c T __divsi3
+0021008a t L1
+00210094 t L2
+002100a6 t L3
+002100ac T __umodsi3
+002100dc 00001530 T awful_put_logo
+0021160c 00000030 T lp
+0021163c 00000014 T sprites_init
+00211650 0000002a T sprites_dma
+0021167a 0000001c T sprites_clamp_link
+00211696 00000068 T sprite_set
+002116fe 0000007e T sprite_put
+0021177c 00000068 T sprites_dma_simple
+002117e4 00000008 T sprites_get_next_sprite
+002117ec 00000008 T sprites_get_sprite_addr
+002117f4 00000008 T sprites_get_table
+002117fc 00000070 T pad_read
+0021186c 0000000c T v_int
+00211878 00000050 T h_int
+002118c8 00000066 T setup
+0021192e 000002ee T main
+00211c1c 0000002a T serial_init
+00211c46 0000002c T serial_puts
+00211c72 0000001e T serial_putc
+00211c90 0000001c T serial_getc
+00211cac 00000022 T serial_get_error
+00211cce 00000022 T serial_get_ready
+00211cf0 00000020 T serial_get_full
+00211d10 0000002e T col_init
+00211d3e 0000006a T col_puts40
+00211da8 000000ae T col_puts
+00211e58 T ___CTOR_LIST__
+00211e58 T __CTOR_LIST__
+00211e60 T __CTOR_END__
+00211e60 T ___DTOR_LIST__
+00211e60 T __DTOR_LIST__
+00211e68 T __DTOR_END__
+00211fc6 00000002 T PLAN_A
+00211fc8 00000002 T PLAN_B
+00211fca 00000020 T palette_blue
+00211fea 00000020 T palette_green
+0021200a 00000020 T palette_red
+0021202a 00000020 T palette_grey
+0021204a 00000004 T palette_black
+0021204e 00000080 T palette_black_all
+002120ce 00000e40 T z80_vgm
+00212f0e 00000064 T cnv_bcd_tab
+00212f72 00000400 T cnv_8to32_tab
+00213372 00000200 T cnv_8to16_tab
+00213572 00000040 T cnv_4to32_tab
+002135b2 00000020 T cnv_4to16_tab
+002135d2 00000010 T cnv_4to8_tab
+002135e2 00000010 T cnv_2to32_tab
+002135f2 00000008 T cnv_2to16_tab
+002135fa 00000004 T cnv_2to8_tab
+002135fe 00000004 T cnv_2to4_tab
+00213602 t logo_lib_palette_pal
+00213614 t logo_lib_palette
+0021361c t logo_lib_image
+00213fa8 T logo_lib
+00213fb6 t font_lib_tiles
+00214212 T font_lib
+0021421a t font_pal_lib_pal
+0021423a T font_pal_lib
+00214242 00001000 T tab_vol
+00215242 00000010 t xlt_all.2207
+00215252 00000008 t xlt.2237
+0021525a T gfx_font
+00217502 0000004e T palette
+00217550 T __INIT_SECTION__
+00217558 T __FINI_SECTION__
+00217560 T _etext
+00ff0000 00000028 D phrases
+00ff0028 00000002 D hint_val
+00ff002c B __bss_start
+00ff002c 00000002 b disableIntStack
+00ff002c D _edata
+00ff002e 00000002 b intLevelSave
+00ff0030 00000004 b ExtIntCB
+00ff0034 00000004 b HIntCB
+00ff0038 00000004 b VIntCB
+00ff003c 00000013 b regValues
+00ff0050 00000004 b result.2398
+00ff0054 00000004 b result.2393
+00ff0058 00000004 b last
+00ff005c 00000004 b framecnt
+00ff0060 00000004 b heap
+00ff0064 00000004 b free
+00ff0068 00000040 b timer
+00ff00a8 00000002 b currentDriver
+00ff00ac 00000002 b fading_cnt
+00ff00ae 00000002 b fading_to
+00ff00b0 00000002 b fading_from
+00ff00b2 00000080 b fading_stepB
+00ff0132 00000080 b fading_stepG
+00ff01b2 00000080 b fading_stepR
+00ff0232 00000080 b fading_palB
+00ff02b2 00000080 b fading_palG
+00ff0332 00000080 b fading_palR
+00ff03b2 00000080 b final_pal
+00ff0434 00000002 b pos_i.2714
+00ff0436 00000002 b phase
+00ff0438 00000002 b state
+00ff043a 00000002 b prio
+00ff043c 00000002 b pal
+00ff043e 00000002 b flag
+00ff0440 00000004 b bmp_buffer_1
+00ff0444 00000004 b bmp_buffer_0
+00ff0448 00000002 b uploadDone
+00ff044a 00000002 b uploadIndex
+00ff044c 00000002 b toUpload
+00ff044e 00000010 b tcSprite
+00ff0460 00000004 b joyEventCB
+00ff0464 00000002 b gport
+00ff0466 00000001 b extSet
+00ff0467 00000001 b gun
+00ff0468 00000001 b phase
+00ff0469 00000001 b retry
+00ff046a 00000002 b portType
+00ff046c 00000002 b portSupport
+00ff046e 00000010 b joyAxisY
+00ff047e 00000010 b joyAxisX
+00ff048e 00000010 b joyState
+00ff049e 00000008 b joyType
+00ff04a8 00000002 B phrase_num
+00ff04aa 00000002 B col_off
+00ff04ac 00000002 B col
+00ff04b0 00000004 B illegalInstCB
+00ff04b4 00000004 B errorExceptionCB
+00ff04b8 00000004 B trapvInstCB
+00ff04bc 00000004 B chkInstCB
+00ff04c0 00000040 B registerState
+00ff0500 00000002 B srState
+00ff0502 00000004 B line1x1xCB
+00ff0506 00000002 B ext2State
+00ff0508 00000004 B traceCB
+00ff050c 00000002 B intTrace
+00ff050e 00000004 B zeroDivideCB
+00ff0512 00000004 B internalExtIntCB
+00ff0516 00000004 B internalVIntCB
+00ff051a 00000004 B intCB
+00ff051e 00000004 B addressErrorCB
+00ff0522 00000004 B VIntProcess
+00ff0526 00000004 B ExtIntProcess
+00ff052a 00000004 B HIntProcess
+00ff052e 00000004 B privilegeViolationCB
+00ff0532 00000004 B pcState
+00ff0536 00000002 B ext1State
+00ff0538 00000004 B busErrorCB
+00ff053c 00000004 B internalHIntCB
+00ff0540 00000004 B addrState
+00ff0544 00000002 B slist_adr
+00ff0546 00000002 B hscrl_adr
+00ff0548 00000002 B screenHeight
+00ff054a 00000002 B screenWidth
+00ff054c 00000002 B aplan_adr
+00ff054e 00000002 B bplan_adr
+00ff0550 00000002 B window_adr
+00ff0552 00000002 B randbase
+00ff0554 00000004 B vtimer
+00ff0558 00000002 B spriteNum
+00ff055a 00000280 B vdpSpriteCache
+00ff07da 00000004 B bmp_buffer_write
+00ff07de 00000004 B bmp_buffer_read
+00ff07e2 00000004 B uploads
+00ff07e6 00000002 B text_basetile
+00ff07e8 00000002 B curTileInd
+00ff07ea 00000004 B text_plan
+00ff07ee 00000004 B VDPSpriteCache
+00ff07f2 00000280 B sprite_table
+00ff0a72 00000002 B next_spr
+00ff0a74 00000002 B sprite_addr
+00ff0a76 00000002 B vbl_wait
+00ff0a78 B _bend
+00ff0a78 B end
+00ff0a78 B __end
+00fffd00 A __stack

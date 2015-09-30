@@ -15,7 +15,7 @@ RESCOMP= rescomp
 
 SCD_LOADER = scd/LukeProjectCD
 
-OPTION =
+OPTION = -fno-builtin
 INCS = -I. -I$(GENDEV)/m68k-elf/include -I$(GENDEV)/m68k-elf/m68k-elf/include -Isrc -Ires -Iinc
 CCFLAGS = $(OPTION) -m68000 -std=c99 -O2 -c -fomit-frame-pointer
 HWCCFLAGS = $(OPTION) -m68000 -std=c99 -O1 -c -fomit-frame-pointer
