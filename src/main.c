@@ -8,8 +8,14 @@ u16 hint_val = 3;
 u16 col = 0;
 u16 col_off = 0;
 u16 phrase_num = 0;
+u16 scroll_off = 0;
+s16 dscroll = 0;
+u16 term_pos = 0;
+u16 term_scrolling = 0;
+volatile u16 vbl_wait;
 
-#define PAL_LEN (53 - 15)
+// Rainbow cycling palette
+#define PAL_LEN (54 - 16)
 const u16 palette[] = 
 {
 	0x00E,
@@ -53,7 +59,78 @@ const u16 palette[] =
 	0x20E
 };
 
-volatile u16 vbl_wait;
+
+void term_print(const char *s, u16 frames)
+{
+	col_puts(0,term_pos++ % 32, s);
+	if (term_pos >= 28)
+	{
+		VDP_setVerticalScroll(PLAN_A, (term_pos - 28) << 3);
+		VDP_setVerticalScroll(PLAN_B, (term_pos - 28) << 3);
+		col_puts(0, term_pos % 32, "                                                                                ");
+	}
+
+	while (frames--)
+	{	
+		while (vbl_wait)
+		{	
+			__asm__("nop");
+		}
+		vbl_wait = 1;
+	}
+}
+
+void bios_boot_demo(void)
+{
+	VDP_clearPlan(VDP_PLAN_A, 0);
+	VDP_clearPlan(VDP_PLAN_B, 0);
+	VDP_setHInterrupt(0);
+	term_print("  ___   ___  ___   ___     ___   ___       ___  ___     ___", 1);
+	term_print(" |___  |__  |  _  |___|   |  _  |__  |\\ | |__  |___  | |___ ", 1);
+	term_print("  ___| |___ |___| |   |   |___| |___ | \\| |___  ___| |  ___|", 1);
+	term_print("", 20);
+	term_print(" Entry Vector 0x202", 2);
+	term_print(" CSHBIOS(C)2016 Computer Science House", 2);
+	term_print(" MD-VA6 BOOT ROM Revision 3", 30);
+	term_print("", 0);
+	term_print(" CPU1 : Motorola 68000 7.6MHz", 2);
+	term_print("   Speed : 7.61 MHz", 2);
+	term_print("", 0);
+	term_print(" CPU2 : Zilog Z80 3.8MHz", 2);
+	term_print("   Speed : 3.80 MHz", 60);
+	term_print("", 0);
+
+	term_print(" Press DEL to run Setup", 0);
+	term_print(" Press <F8> for BBS POPUP", 170);
+	term_print("", 0);
+
+	term_print(" SRAM Asynchronous 2 x 65256 (64k x 8), single channel, parallel", 16);
+	term_print("  Checking SRAM...", 60);
+	term_print(" 8K  OK", 7);
+	term_print(" 16K OK", 7);
+	term_print(" 24K OK", 7);
+	term_print(" 32K OK", 7);
+	term_print(" 40K OK", 7);
+	term_print(" 48K OK", 7);
+	term_print(" 56K OK", 7);
+	term_print(" 64K OK", 60);
+	term_print("", 0);
+
+	term_print(" VDP : Sega 315-5313 (Yamaha YM7101)", 2);
+	term_print("   Speed: 56MHz", 2);
+	term_print("   VRAM: 64K Serial Out Parallel Load DRAM", 2);
+	term_print("   CRAM: 64 x 9", 2);
+	term_print("   TMSS Enabled", 1);
+	term_print("", 60);
+	term_print(" 0xC00000 : Data Port", 20);
+	term_print(" 0xC00004 : Control Port", 20);
+	term_print(" 0xC00008 : H/V counter", 20);
+	term_print(" 0xC00011 : SN76489", 20);
+	term_print(" 0xC0001C : Debug Register", 70);
+	term_print("", 0);
+	term_print(" Starting demo...", 120);
+}
+
 
 _voidCallback *v_int(void)
 {
@@ -70,6 +147,17 @@ _voidCallback *h_int(void)
 		col -= PAL_LEN;
 	}
 	return NULL; 
+}	
+
+_voidCallback *h_int_scroll(void)
+{
+	if (scroll_off > 200)
+	{
+		VDP_setPaletteColor(14, 0);
+	}
+	scroll_off += dscroll;
+	VDP_setVerticalScroll(PLAN_A, scroll_off);
+	return NULL;
 }
 
 void setup(void)
@@ -117,7 +205,7 @@ const char* phrases[] =
 	"                       We're working on drink, we swear!                ",
 	"         Lean synergy-driven agile development to leverage our product. ",
 	"                          Can you hear my microphone?                   ",
-	"                         Microsoft wouldn't do that...                  ",
+	"                       Microsoft wouldn't do that...                    ",
 	0
 
 };
@@ -153,24 +241,68 @@ static void process_stars(star *stars)
 	}
 }
 
+void startup_stretch(void)
+{
+	SYS_setHIntCallback((_voidCallback *)h_int_scroll);
+	VDP_setHIntCounter(3);
+	VDP_setHInterrupt(1);
+
+
+	u16 counter = 240;
+	while (counter--)
+	{
+		while (vbl_wait)
+		{	
+			__asm__("nop");
+		}
+		VDP_setHInterrupt(0);
+		VDP_setPaletteColor(14,palette[counter % 32]);
+		vbl_wait = 1;
+		counter--;
+		scroll_off = 0;
+		dscroll = counter / 4;
+		VDP_setHInterrupt(1);
+	}
+	VDP_setHInterrupt(0);
+}
+
 int main(void)
 {
 	u16 delay_mod = 4;
 	u16 col_inc_cnt = 0;
 	setup();
+reset_demo:
+	sprites_dma_simple();
+	term_pos = 0;
+	VDP_setHInterrupt(0);
+
+	VDP_clearPlan(VDP_PLAN_A, 0);
+	VDP_clearPlan(VDP_PLAN_B, 0);
+	// Greyscale palette for text
 	VDP_setPaletteColor(0,0x000);
 	VDP_setPaletteColor(1,0x444);
 	VDP_setPaletteColor(2,0x888);
 	VDP_setPaletteColor(3,0xEEE);
+
+	bios_boot_demo();
+	VDP_clearPlan(VDP_PLAN_A, 0);
+	VDP_clearPlan(VDP_PLAN_B, 0);
+
+
+	awful_put_logo(8, 2);
+	startup_stretch();
+
+	VDP_setVerticalScroll(PLAN_A, 252);
+	VDP_setVerticalScroll(PLAN_B, 252);
+
 	VDP_setHIntCounter(hint_val);
+	SYS_setHIntCallback((_voidCallback *)h_int);
 	volatile u8 p1 = pad_read(0);
-	VDP_setHInterrupt(0);
 	sprites_init();
 
 	col_puts40(8,0,"Computer Science House");
 
-	awful_put_logo(8, 2);
-
+	// Initialize background stars
 	star stars[NUM_STARS];
 	u16 i = 0;
 	for (i = 0; i < NUM_STARS; i++)
@@ -203,6 +335,7 @@ int main(void)
 			if (phrase_num == 8)
 			{
 				phrase_num = 0;
+				goto reset_demo;
 			}
 			hint_val++;
 			if (hint_val == 10)
