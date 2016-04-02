@@ -1,4 +1,5 @@
 #include <genesis.h>
+#include "music.h"
 #include "col.h"
 #include "mpad.h"
 #include "sprites.h"
@@ -266,8 +267,12 @@ void startup_stretch(void)
 	VDP_setHInterrupt(0);
 }
 
+
+
 int main(void)
 {
+	music_init();
+	music_play(3);
 	u16 delay_mod = 4;
 	u16 col_inc_cnt = 0;
 	setup();
