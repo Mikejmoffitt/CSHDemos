@@ -85,6 +85,7 @@ void bios_boot_demo(void)
 {
 	VDP_clearPlan(VDP_PLAN_A, 0);
 	VDP_clearPlan(VDP_PLAN_B, 0);
+
 	VDP_setHInterrupt(0);
 	term_print("  ___   ___  ___   ___     ___   ___       ___  ___     ___", 1);
 	term_print(" |___  |__  |  _  |___|   |  _  |__  |\\ | |__  |___  | |___ ", 1);
@@ -277,6 +278,16 @@ int main(void)
 	u16 col_inc_cnt = 0;
 	setup();
 reset_demo:
+
+		hint_val = 3;
+	col = 0;
+	col_off = 0;
+	phrase_num = 0;
+	scroll_off = 0;
+	dscroll = 0;
+	term_pos = 0;
+	term_scrolling = 0;
+
 	sprites_dma_simple();
 	term_pos = 0;
 	VDP_setHInterrupt(0);
@@ -289,7 +300,9 @@ reset_demo:
 	VDP_setPaletteColor(2,0x888);
 	VDP_setPaletteColor(3,0xEEE);
 
+	VDP_setScreenWidth256();
 	bios_boot_demo();
+	VDP_setScreenWidth320();
 	VDP_clearPlan(VDP_PLAN_A, 0);
 	VDP_clearPlan(VDP_PLAN_B, 0);
 
@@ -340,6 +353,16 @@ reset_demo:
 			if (phrase_num == 8)
 			{
 				phrase_num = 0;
+
+				VDP_setHInterrupt(0);
+				sprite_set(0, 0, 0, 0, 0, 0);
+				sprites_dma_simple();
+				while (vbl_wait)
+		{	
+			__asm__("nop");
+		}
+
+		vbl_wait = 1;
 				goto reset_demo;
 			}
 			hint_val++;
